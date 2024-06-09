@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Routes, Route } from "react-router-dom";
 import logo from './allphotos/logo.png'
-import { FaYoutube, FaInstagram, FaTwitter, FaFacebook, FaArrowUp } from 'react-icons/fa';
-import { RiShoppingCartLine } from "react-icons/ri";
+import { FaYoutube, FaInstagram, FaTwitter, FaFacebook, FaArrowUp } from 'react-icons/fa'
+import { RiShoppingCartLine } from "react-icons/ri"
 import Search from './Search'
 import Login from './Login';
 import About from './About';
@@ -18,7 +18,9 @@ import Cart from './Cart';
 export default function Navbar() {
 
     const [showbtn, setShowbtn] = useState(false);
-    const [cartnumber, setCartnumber] = useState(0);
+    const [cartnumber, setCartnumber] = useState(0)
+    const navStyle = 'content-center hover:text-red-500'
+    const btnStyle = 'bg-gray-900 px-4 py-2 rounded-md hover:bg-red-500'
 
     useEffect(() => {
         const showScrollTop = () => {
@@ -45,29 +47,52 @@ export default function Navbar() {
     });
 
     return (
-        <>
-            <div className='min-h-20 flex justify-between sticky top-0 dark:bg-black text-white z-20 flex-wrap'>
-                <div className='ml-20 content-center'>
-                    <a href="/" ><img src={logo} alt="nopic" className='min-w-14 max-w-16' /></a>
+        <div className="bg-black text-gray-900 mx-8">
+            <header className="py-4 px-8 flex justify-between items-center">
+                <div className="flex items-center">
+                    <h1 className="text-2xl font-bold mr-4">
+                        ARR<span className="text-red-500">O</span>RRA
+                    </h1>
+                    <img src={logo} alt="Logo" className="w-8 h-8" />
                 </div>
-                <div className='mr-20 flex justify-around items-center gap-8 flex-wrap'>
-                    <a href="/" className='content-center hover:text-red-700'>Home</a>
-                    <a href="shop" className='content-center hover:text-red-700'>Shop</a>
-                    <a href="about" className='content-center hover:text-red-700'>About us</a>
-                    <a href="contact" className='content-center hover:text-red-700'>Contact Us</a>
-                    <a href="profile" className='content-center hover:text-red-700'>My profile</a>
-                    <a href="login" className='content-center hover:text-red-700'>Login/Signup</a>
-                    <a href="cart" className='relative flexitems-center flex-col h-full'>
-                        <span className='absolute ml-4 my-7 z-30 text-xs'>
-                            <span className=''>
-                                {cartnumber}
-                            </span>
-                        </span>
-                        <RiShoppingCartLine className='mt-9' />
-                    </a>
-                </div>
-            </div>
-            {/* scroll to top button */}
+                <nav className="">
+                    <div className='flex justify-around items-center gap-8 flex-wrap space-x-4'>
+                        <a href="/" className={navStyle}>HOME</a>
+                        <a href="shop" className={navStyle}>SHOP</a>
+                        <a href="about" className={navStyle}>ABOUT US</a>
+                        <a href="contact" className={navStyle}>CONTACT US</a>
+                        <a href="profile" className={navStyle}>MY PROFILE</a>
+                        <a href="cart" className={navStyle}>
+                            {/* <div className='relative flexitems-center flex-col '>
+                <span className='absolute ml-4 my-7 z-30 text-xs'>
+                  <span className=''>
+                    {cartnumber}
+                  </span>
+                </span>
+                <RiShoppingCartLine className='mt-9' />
+              </div> */}
+                            CART
+                        </a>
+                        <a href="login">
+                            <button className={btnStyle}>
+                                {/* <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a2 2 0 11-4 0 2 2 0 014 0z"
+                  clipRule="evenodd"
+                />
+              </svg> */}
+                                LOGIN/SIGN UP
+                            </button>
+                        </a>
+                    </div>
+                </nav>
+            </header>
             <div>
                 {showbtn && (
                     <div className={`scrollToTop`}>
@@ -89,8 +114,8 @@ export default function Navbar() {
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/cart" element={<Cart />} />
             </Routes>
-            <footer>
-                <div className='flex flex-row justify-around gap-16 w-screen mt-32'>
+            <footer className="bg-[#171717ee]">
+                <div className='flex flex-row justify-around gap-16 w-screen mt-10'>
                     <div className='flex flex-col'>
                         <label htmlFor="info-links" className=''>
                             <h2 className='font-bold'>INFORMATION</h2>
@@ -133,7 +158,10 @@ export default function Navbar() {
                         </label>
                     </div>
                 </div>
+                <p className="text-center text-sm">
+                    &copy; 2024 ARRORRA. All Rights Reserved.
+                </p>
             </footer>
-        </>
-    )
-}
+        </div>
+    );
+};
