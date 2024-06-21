@@ -1,8 +1,53 @@
-### `npm install`
+you need to setup tailswindcss, you can follow steps below or can visit 'https://tailwindcss.com/docs/installation'
 
-installs all the dependencies required
+```
+npm install -D tailwindcss
+```
 
-### `npm start`
+```
+npx tailwindcss init
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Edit this in 'tailwind.config.js'
+
+```
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./src/**/*.{html,js}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
+
+Edit this in './src/index.css'
+
+```
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+Start the Tailwind CLI build process using:
+
+```
+npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch
+```
+
+Add this link in 'index.html'
+
+```
+<link href="/dist/output.css" rel="stylesheet">
+```
+
+To install all dependencies, you can run:
+
+```
+npm install
+```
+
+In the project directory, you can run:
+
+```
+npm start
+```
